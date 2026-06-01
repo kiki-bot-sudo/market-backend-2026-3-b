@@ -10,6 +10,10 @@ import jakarta.persistence.*;
     @EmbeddedId
     private CompraProductoPK id;
 
+    @ManyToOne
+    @JoinColumn(name= "id_compra", insertable = false, updatable = false)
+    private Compra compra;
+
     private  Integer cantidad;
     private  Double total;
     protected Boolean estado;

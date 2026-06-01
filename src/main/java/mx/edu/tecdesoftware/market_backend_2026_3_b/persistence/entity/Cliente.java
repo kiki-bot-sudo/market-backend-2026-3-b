@@ -2,8 +2,11 @@ package mx.edu.tecdesoftware.market_backend_2026_3_b.persistence.entity;
 
 import jakarta.persistence.*;
 
+import java.util.List;
+import java.util.Map;
+
 @Entity
-@Table (name = "Clientes")
+@Table (name = "clientes")
 public class Cliente {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -19,6 +22,9 @@ public class Cliente {
 
     @Column( name = "correo_electronico")
     private String correoElectronico;
+
+    @OneToMany(mappedBy = "cliente")
+    private List<Compra> compras;
 
     public Integer getId() {
         return id;
