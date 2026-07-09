@@ -4,6 +4,7 @@ package mx.edu.tecdesoftware.market_backend_2026_3_b.persistence.entity;
 import jakarta.persistence.*;
 import java.time.LocalDateTime;
 import java.util.List;
+import jakarta.persistence.CascadeType;
 
 
 @Entity
@@ -32,10 +33,9 @@ public class Compra {
     @JoinColumn(name= "id_cliente")
     private Cliente cliente;
 
-    @OneToMany(mappedBy = "compra")
+
+    @OneToMany(mappedBy = "compra", cascade = CascadeType.ALL)
     private List<CompraProducto> productos;
-
-
 
 
     public Integer getIdCompra() {
@@ -86,19 +86,19 @@ public class Compra {
         this.estado = estado;
     }
 
-    public List<CompraProducto> getProductos() {
-        return productos;
-    }
-
-    public void setProductos(List<CompraProducto> productos) {
-        this.productos = productos;
-    }
-
     public Cliente getCliente() {
         return cliente;
     }
 
     public void setCliente(Cliente cliente) {
         this.cliente = cliente;
+    }
+
+    public List<CompraProducto> getProductos() {
+        return productos;
+    }
+
+    public void setProductos(List<CompraProducto> productos) {
+        this.productos = productos;
     }
 }

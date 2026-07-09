@@ -11,6 +11,7 @@ import jakarta.persistence.*;
     private CompraProductoPK id;
 
     @ManyToOne
+    @MapsId("idCompra")
     @JoinColumn(name= "id_compra", insertable = false, updatable = false)
     private Compra compra;
 
