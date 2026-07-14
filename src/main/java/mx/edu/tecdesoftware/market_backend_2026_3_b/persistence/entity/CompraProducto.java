@@ -12,8 +12,13 @@ import jakarta.persistence.*;
 
     @ManyToOne
     @MapsId("idCompra")
-    @JoinColumn(name= "id_compra", insertable = false, updatable = false)
+    @JoinColumn(name= "id_compra")
     private Compra compra;
+
+    @ManyToOne
+    @MapsId("idProducto")
+    @JoinColumn(name = "id_producto")
+    private Producto producto;
 
     private  Integer cantidad;
     private  Double total;
@@ -33,6 +38,14 @@ import jakarta.persistence.*;
 
     public void setCompra(Compra compra) {
         this.compra = compra;
+    }
+
+    public Producto getProducto() {
+        return producto;
+    }
+
+    public void setProducto(Producto producto) {
+        this.producto = producto;
     }
 
     public Integer getCantidad() {

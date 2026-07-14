@@ -2,20 +2,10 @@ package mx.edu.tecdesoftware.market_backend_2026_3_b.domain;
 
 public class PurchaseItem {
 
-    private int PurchaseId;
     private int productId;
     private int quantity;
-    private int total;
+    private double total;
     private boolean status;
-
-
-    public int getPurchaseId() {
-        return PurchaseId;
-    }
-
-    public void setPurchaseId(int purchaseId) {
-        PurchaseId = purchaseId;
-    }
 
     public int getProductId() {
         return productId;
@@ -33,11 +23,11 @@ public class PurchaseItem {
         this.quantity = quantity;
     }
 
-    public int getTotal() {
+    public double getTotal() {
         return total;
     }
 
-    public void setTotal(int total) {
+    public void setTotal(double total) {
         this.total = total;
     }
 

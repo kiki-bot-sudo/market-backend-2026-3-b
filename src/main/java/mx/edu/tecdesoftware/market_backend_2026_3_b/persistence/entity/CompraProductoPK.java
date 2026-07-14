@@ -2,15 +2,17 @@ package mx.edu.tecdesoftware.market_backend_2026_3_b.persistence.entity;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Embeddable;
-import jakarta.persistence.Embedded;
+
+import java.io.Serializable;
+import java.util.Objects;
 
 @Embeddable
-public class CompraProductoPK {
+public class CompraProductoPK implements Serializable {
 
-    @Column
+    @Column(name = "id_compra")
     private Integer idCompra;
 
-    @Column
+    @Column(name = "id_producto")
     private Integer idProducto;
 
     public Integer getIdCompra() {
@@ -29,5 +31,20 @@ public class CompraProductoPK {
         this.idProducto = idProducto;
     }
 
+    @Override
+    public boolean equals(Object object) {
+        if (this == object) {
+            return true;
+        }
+        if (!(object instanceof CompraProductoPK other)) {
+            return false;
+        }
+        return Objects.equals(idCompra, other.idCompra) && Objects.equals(idProducto, other.idProducto);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(idCompra, idProducto);
+    }
 
 }

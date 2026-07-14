@@ -1,14 +1,17 @@
 package mx.edu.tecdesoftware.market_backend_2026_3_b.domain;
 
 import java.util.List;
+import jakarta.validation.constraints.Size;
 
 public class Purchase {
 
     private int purchaseId;
-    private int clientId;
+    private String clientId;
     private String date;
+    @Size(max = 1, message = "payMethod debe tener un solo carácter")
     private String payMethod;
     private String comment;
+    @Size(max = 1, message = "status debe tener un solo carácter")
     private String status;
     private List<PurchaseItem> items;
 
@@ -20,11 +23,11 @@ public class Purchase {
         this.purchaseId = purchaseId;
     }
 
-    public int getClientId() {
+    public String getClientId() {
         return clientId;
     }
 
-    public void setClientId(int clientId) {
+    public void setClientId(String clientId) {
         this.clientId = clientId;
     }
 

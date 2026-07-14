@@ -8,16 +8,13 @@ import jakarta.persistence.CascadeType;
 
 
 @Entity
-@Table (name = "compras")
+@Table(name = "compras")
 public class Compra {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column (name = "id_compra")
+    @Column(name = "id_compra")
     private Integer idCompra;
-
-    @Column (name = "id_cliente")
-    private String idCliente;
 
     private LocalDateTime fecha;
 
@@ -30,11 +27,10 @@ public class Compra {
 
     //Relacion con cliente: Muchas compras para un cliente
     @ManyToOne
-    @JoinColumn(name= "id_cliente")
+    @JoinColumn(name = "id_cliente")
     private Cliente cliente;
 
-
-    @OneToMany(mappedBy = "compra", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "compra", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<CompraProducto> productos;
 
 
@@ -44,14 +40,6 @@ public class Compra {
 
     public void setIdCompra(Integer idCompra) {
         this.idCompra = idCompra;
-    }
-
-    public String getIdCliente() {
-        return idCliente;
-    }
-
-    public void setIdCliente(String idCliente) {
-        this.idCliente = idCliente;
     }
 
     public LocalDateTime getFecha() {
